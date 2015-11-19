@@ -1,0 +1,51 @@
+.file-top-image{
+    background-size: cover;
+}
+
+.file-footer{
+    padding: 50px 0;
+    background-color: #fe7877;
+}
+.file-footer, .file-footer a{
+    color: #FAFAFA !important;
+}
+
+.uk-panel-box{
+    border: none;
+    background: #eee;
+}
+
+.tinytable h1, .tinytable h2, .tinytable h3, .tinytable h4, .tinytable h5, .tinytable h6{
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+}
+.tinytable .head h3:before{
+    content: "♦";
+    padding-right: 10px;
+    color: #FE7877;
+}
+.tinytable .asc h3:before{
+    content: "↓";
+    padding-right: 10px;
+    color: #FE7877;
+}
+.tinytable .desc h3:before{
+    content: "↑";
+    padding-right: 10px;
+    color: #FE7877;
+}
+.tinytable tfoot{
+    display: none;
+}
+
+@media (min-width: 768px){
+    .file-footer{
+        padding: 70px 0;
+    }
+}
+@media (min-width: 1220px){
+    .file-footer{
+        padding: 100px 0;
+    }
+}
