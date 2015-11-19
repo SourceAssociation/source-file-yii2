@@ -30,6 +30,15 @@ AppAsset::register($this);
     <script src="/tools/uikit/js/uikit.min.js"></script>
     <script src="/tools/uikit/js/components/parallax.min.js"></script>
     <script src="/tools/uikit/js/components/grid.min.js"></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ae0228cbb1d686865a5061ad470ff7e0";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
 
 </head>
 <body>
