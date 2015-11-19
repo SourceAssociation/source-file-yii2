@@ -4,7 +4,7 @@
 
 use yii\web\AssetBundle;
 
-$this->title = Yii::t('app', 'Files');
+$this->title = Yii::t('app', 'siteTitle');
 ?>
 
 <?php if (count($files)) :?>
@@ -46,10 +46,14 @@ $this->title = Yii::t('app', 'Files');
                 <td><?php echo date('Y-m-d', strtotime($file->create_at)); ?></td>
                 <td><?php echo Yii::$app->params['file_url_type'][$file->urltype]; ?></td>
                 <td>
-                    <?php if ($file->urltype == 1):?>
-                        <a href="<?php echo $file->url;?>" download="true">下载</a>
+                    <?php if ($file->pwd):?>
+                        <a href="javascript:void(0)" fid="<?php echo $file->id;?>" class="enter-pwd-btn">输入密码</a>
                     <?php else:?>
-                        <a href="<?php echo $file->url;?>" target="_blank">打开</a>
+                        <?php if ($file->urltype == 1):?>
+                            <a href="<?php echo $file->url;?>" download="true">下载</a>
+                        <?php else:?>
+                            <a href="<?php echo $file->url;?>" target="_blank">打开</a>
+                        <?php endif;?>
                     <?php endif;?>
                 </td>
             </tr>
@@ -127,6 +131,26 @@ $this->title = Yii::t('app', 'Files');
         avg:[6,7,8,9],
         columns:[{index:7, format:'%', decimals:1},{index:8, format:'$', decimals:0}],
         init:true
+    });
+
+    jQuery(document).ready(function($) {
+        $('.enter-pwd-btn').on('click', function(){
+            fid = $(this).attr('fid');
+            _this = $(this);
+            notie.input('Please enter password:', 'Submit', 'Cancel', 'password', 'password', function(value_entered) {
+                $.post('/ajax/file/valid', {fid: fid, pwd: value_entered}, function(data) {
+                    res = $.parseJSON(data);
+                    console.log(res);
+                    if (res.error) {
+                        notie.alert(1, res.msg, 2);
+                    }else{
+                        html = "<a href=\""+res.url+"\" target=\"_blank\">开始获取</a>"
+                        _this.replaceWith(html);
+                    }
+                });
+
+            });
+        });
     });
 </script>
 

@@ -20,7 +20,7 @@ class File extends CommonFile
     {
         $fields = parent::fields();
         // 去掉一些包含敏感信息的字段
-        unset($fields['id'], $fields['uid'], $fields['name']);
+        unset($fields['key'], $fields['uid'], $fields['pwd']);
         return $fields;
     }
 
@@ -58,6 +58,15 @@ class File extends CommonFile
             return Yii::$app->params['file_unknown']['url_type_unknown'];
         }else{
             return Yii::$app->params['file_url_type'][$this->urltype];
+        }
+    }
+
+    public function validatePassword($pwd='')
+    {
+        if ($this->pwd == md5($pwd)) {
+            return true;
+        }else{
+            return false;
         }
     }
 }

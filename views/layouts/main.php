@@ -35,7 +35,7 @@ AppAsset::register($this);
     (function() {
       var hm = document.createElement("script");
       hm.src = "//hm.baidu.com/hm.js?ae0228cbb1d686865a5061ad470ff7e0";
-      var s = document.getElementsByTagName("script")[0]; 
+      var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
@@ -64,6 +64,9 @@ AppAsset::register($this);
             </div>
         </div>
     </footer>
+
+    <script src="/tools/notie/notie.js"></script>
+
 </body>
 <?php $this->endBody() ?>
 </body>

@@ -59,7 +59,12 @@ $config = [
             'errorAction' => 'site/error',
         ],
     ],
-    'modules' => [],
+    'modules' => [
+        'ajax' => [
+            'class' => 'file\modules\ajax\Module',
+            'defaultRoute' => 'site/index',
+        ],
+    ],
     'params' => $params,
 ];
 
